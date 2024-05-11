@@ -22,7 +22,7 @@ def new_random_seed():
     prev_random_state = random.getstate()
     random.setstate(seed_random_state)
     seed = random.randint(1, 1125899906842624)
-    rgthree_seed_random_state = random.getstate()
+    seed_random_state = random.getstate()
     random.setstate(prev_random_state)
     return seed
 

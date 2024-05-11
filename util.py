@@ -70,7 +70,7 @@ class HelperNodes_CfgScale(BaseNode):
             }
         }
 
-    RETURN_TYPES = ("INT", )
+    RETURN_TYPES = ("FLOAT", )
     RETURN_NAMES = ("CFG",)
 
     CATEGORY = f"{MODULE_CATEGORY}"
