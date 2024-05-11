@@ -1,4 +1,4 @@
-from base import GLOBAL_CATEGORY, BaseNode
+from .base import GLOBAL_CATEGORY, BaseNode
 
 import comfy
 import comfy.samplers
