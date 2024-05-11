@@ -5,6 +5,10 @@ from .scheduler import HelperNodes_SchedulerSelector
 
 from .sampler import HelperNodes_SamplerSelector, HelperNodes_SeedSelector
 
+from .conditioning import HelperNodes_CLIPSkip
+
+from .models import HelperNodes_VAESelector, HelperNodes_CheckpointSelector
+
 
 NODE_CLASS_MAPPINGS = {
     "HelperNodes_MultilineStringLiteral": HelperNodes_MultilineStringLiteral,
@@ -15,6 +19,8 @@ NODE_CLASS_MAPPINGS = {
     "HelperNodes_SchedulerSelector": HelperNodes_SchedulerSelector,
     "HelperNodes_SamplerSelector": HelperNodes_SamplerSelector,
     "HelperNodes_SeedSelector": HelperNodes_SeedSelector,
+    "HelperNodes_CheckpointSelector": HelperNodes_CheckpointSelector,
+    "HelperNodes_VAESelector": HelperNodes_VAESelector,
 }
 
 NODE_DISPLAY_NAME_MAPPINGS = {
@@ -23,7 +29,9 @@ NODE_DISPLAY_NAME_MAPPINGS = {
     "HelperNodes_Steps": "Steps",
     "HelperNodes_CfgScale": "CFG Scale",
     "HelperNodes_WidthHeight": "Image Dimensions",
-    "HelperNodes_SchedulerSelector": "Scheduler",
-    "HelperNodes_SamplerSelector": "Sampler",
+    "HelperNodes_SchedulerSelector": "Scheduler Selector",
+    "HelperNodes_SamplerSelector": "Sampler Selector",
     "HelperNodes_SeedSelector": "Seed",
+    "HelperNodes_CheckpointSelector": "Checkpoint Selector",
+    "HelperNodes_VAESelector": "VAE Selector",
 }
