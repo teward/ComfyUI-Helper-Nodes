@@ -9,7 +9,9 @@ from .conditioning import HelperNodes_CLIPSkip
 
 from .models import HelperNodes_VAESelector, HelperNodes_CheckpointSelector
 
-from .prompt import HelperNode_Prompt
+from .prompt import HelperNodes_Prompt
+
+from .sdxl import HelperNodes_SDXLCommonResolutions
 
 
 NODE_CLASS_MAPPINGS = {
@@ -23,7 +25,8 @@ NODE_CLASS_MAPPINGS = {
     "HelperNodes_SeedSelector": HelperNodes_SeedSelector,
     "HelperNodes_CheckpointSelector": HelperNodes_CheckpointSelector,
     "HelperNodes_VAESelector": HelperNodes_VAESelector,
-    "HelperNodes_Prompt": HelperNode_Prompt,
+    "HelperNodes_Prompt": HelperNodes_Prompt,
+    "HelperNodes_SDXLCommonResolutions": HelperNodes_SDXLCommonResolutions,
 }
 
 NODE_DISPLAY_NAME_MAPPINGS = {
@@ -38,4 +41,5 @@ NODE_DISPLAY_NAME_MAPPINGS = {
     "HelperNodes_CheckpointSelector": "Checkpoint Selector",
     "HelperNodes_VAESelector": "VAE Selector",
     "HelperNodes_Prompt": "Positive/Negative Prompts",
+    "HelperNodes_SDXLCommonResolutions": "Common SDXL Resolutions",
 }
