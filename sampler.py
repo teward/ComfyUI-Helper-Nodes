@@ -8,8 +8,8 @@ import comfy.samplers
 
 MODULE_CATEGORY = f"{GLOBAL_CATEGORY}/sampler"
 
-# Some extension must be setting a seed as server-generated seeds were not random. We'll set a new
-# seed and use that state going forward.
+# Initialize the random system anew. This is because some extensions may alter
+# this seed generation process and cause problems.
 initial_random_state = random.getstate()
 random.seed(datetime.now().timestamp())
 seed_random_state = random.getstate()
