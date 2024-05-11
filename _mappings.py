@@ -9,6 +9,8 @@ from .conditioning import HelperNodes_CLIPSkip
 
 from .models import HelperNodes_VAESelector, HelperNodes_CheckpointSelector
 
+from .prompt import HelperNode_Prompt
+
 
 NODE_CLASS_MAPPINGS = {
     "HelperNodes_MultilineStringLiteral": HelperNodes_MultilineStringLiteral,
@@ -21,6 +23,7 @@ NODE_CLASS_MAPPINGS = {
     "HelperNodes_SeedSelector": HelperNodes_SeedSelector,
     "HelperNodes_CheckpointSelector": HelperNodes_CheckpointSelector,
     "HelperNodes_VAESelector": HelperNodes_VAESelector,
+    "HelperNodes_Prompt": HelperNode_Prompt,
 }
 
 NODE_DISPLAY_NAME_MAPPINGS = {
@@ -34,4 +37,5 @@ NODE_DISPLAY_NAME_MAPPINGS = {
     "HelperNodes_SeedSelector": "Seed",
     "HelperNodes_CheckpointSelector": "Checkpoint Selector",
     "HelperNodes_VAESelector": "VAE Selector",
+    "HelperNodes_Prompt": "Positive/Negative Prompts",
 }
