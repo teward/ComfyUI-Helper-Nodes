@@ -86,6 +86,14 @@ class HelperNodes_VAESelector(BaseNode):
             sd["vae_scale"] = torch.tensor(0.13025)
         return sd
 
+    @classmethod
+    def INPUT_TYPES(cls) -> dict:
+        return {
+            "required": {
+                "vae_name": (cls.vae_list(),)
+            }
+        }
+
     CATEGORY = f"{MODULE_CATEGORY}"
 
     RETURN_TYPES = ("VAE",)
