@@ -3,7 +3,7 @@ from .util import HelperNodes_Steps, HelperNodes_CfgScale, HelperNodes_WidthHeig
 
 from .scheduler import HelperNodes_SchedulerSelector
 
-from .sampler import HelperNodes_SamplerSelector
+from .sampler import HelperNodes_SamplerSelector, HelperNodes_SeedSelector
 
 
 NODE_CLASS_MAPPINGS = {
@@ -14,6 +14,7 @@ NODE_CLASS_MAPPINGS = {
     "HelperNodes_WidthHeight": HelperNodes_WidthHeight,
     "HelperNodes_SchedulerSelector": HelperNodes_SchedulerSelector,
     "HelperNodes_SamplerSelector": HelperNodes_SamplerSelector,
+    "HelperNodes_SeedSelector": HelperNodes_SeedSelector,
 }
 
 NODE_DISPLAY_NAME_MAPPINGS = {
@@ -24,4 +25,5 @@ NODE_DISPLAY_NAME_MAPPINGS = {
     "HelperNodes_WidthHeight": "Image Dimensions",
     "HelperNodes_SchedulerSelector": "Scheduler",
     "HelperNodes_SamplerSelector": "Sampler",
+    "HelperNodes_SeedSelector": "Seed",
 }
