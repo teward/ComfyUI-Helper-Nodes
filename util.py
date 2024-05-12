@@ -3,6 +3,8 @@ from .base import GLOBAL_CATEGORY, BaseNode
 import comfy
 import comfy.samplers
 
+from nodes import MAX_RESOLUTION
+
 MODULE_CATEGORY = f"{GLOBAL_CATEGORY}/util"
 
 
@@ -19,7 +21,7 @@ class HelperNodes_WidthHeight(BaseNode):
         return {
             "required": {
                 "width": ("INT", {
-                    "default": 1024,
+                    "default": MAX_RESOLUTION,
                     "min": 8,
                     "max": 4096,
                     "step": 8,
@@ -28,7 +30,7 @@ class HelperNodes_WidthHeight(BaseNode):
                 "height": ("INT", {
                     "default": 1024,
                     "min": 8,
-                    "max": 4096,
+                    "max": MAX_RESOLUTION,
                     "step": 8,
                     "display": "number"
                 }),
@@ -60,9 +62,9 @@ class HelperNodes_CfgScale(BaseNode):
         return {
             "required": {
                 "scale": ("FLOAT", {
-                    "default": 8.0,
-                    "min": 0.0,
-                    "max": 10.0,
+                    "default": 8.00,
+                    "min": 0.00,
+                    "max": 10.00,
                     "step": 0.25,
                     "round": 0.00,
                     "display": "number"

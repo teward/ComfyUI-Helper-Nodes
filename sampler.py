@@ -21,7 +21,7 @@ def new_random_seed():
     global seed_random_state
     prev_random_state = random.getstate()
     random.setstate(seed_random_state)
-    seed = random.randint(1, 1125899906842624)
+    seed = random.randint(1, 18446744073709551615)
     seed_random_state = random.getstate()
     random.setstate(prev_random_state)
     return seed
@@ -65,7 +65,7 @@ class HelperNodes_SeedSelector(BaseNode):
                 "seed": ("INT", {
                     "default": -1,
                     "min": -1,
-                    "max": 1125899906842624,
+                    "max": 18446744073709551615,   # equivalent to 0xffffffffffffffff - 64-bit integer max
                     "step": 1
                 }),
             },
