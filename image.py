@@ -143,7 +143,7 @@ class HelperNodes_SaveImage(BaseNode):
 
     @staticmethod
     def save_images(images, output_path, filename_prefix, comment, extension, quality_jpeg_or_webp, lossless_webp,
-                    prompt=None, extra_pnginfo=None, include_metadata=True, include_prompt_in_metadata=False,
+                    prompt=None, extra_pnginfo=None, include_metadata=True, include_prompt_in_metadata=True,
                     include_extra_pnginfo=False) -> list[str]:
         img_count = 1
         paths = []
@@ -163,6 +163,8 @@ class HelperNodes_SaveImage(BaseNode):
                         metadata.add_text("prompt", json.dumps(prompt))
                     if extra_pnginfo is not None and include_extra_pnginfo:
                         for x in extra_pnginfo:
+                            if x == "Workflow" and not include_prompt_in_metadata:
+                                continue  # Skip storing the workflow.
                             metadata.add_text(x, json.dumps(extra_pnginfo[x]))
 
                 filename = f"{filename_prefix}.png"
