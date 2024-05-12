@@ -162,8 +162,9 @@ class HelperNodes_SaveImage(BaseNode):
                     if prompt is not None and include_prompt_in_metadata:
                         metadata.add_text("prompt", json.dumps(prompt))
                     if extra_pnginfo is not None and include_extra_pnginfo:
-                        print(extra_pnginfo.keys())
                         for x in extra_pnginfo:
+                            if x.lower() == 'workflow' and not include_prompt_in_metadata:
+                                continue  # skip adding the workflow.
                             metadata.add_text(x, json.dumps(extra_pnginfo[x]))
 
                 filename = f"{filename_prefix}.png"
