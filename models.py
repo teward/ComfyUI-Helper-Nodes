@@ -1,6 +1,8 @@
 from .base import BaseNode, GLOBAL_CATEGORY
 
+# noinspection PyUnresolvedReferences,PyPackageRequirements
 import comfy.utils
+# noinspection PyUnresolvedReferences,PyPackageRequirements
 import folder_paths
 
 MODULE_CATEGORY = f"{GLOBAL_CATEGORY}/models"

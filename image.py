@@ -28,7 +28,12 @@ class HelperNodes_SaveImage(BaseNode):
     https://github.com/giriss/comfy-image-saver.git but allows us to
     greatly REDUCE runtime by not serializing the ComfyUI workflow into the metadata.
 
-    That is controlled by two boolean values.
+    That is controlled by multiple boolean values to control whether we output metadata
+    and if we do what we include.
+
+    This is designed to work with other nodes in this library, which provide aspect_ratio and orientation.
+
+    Orientation can be calculated based on width and height, if not provided otherwise.
     """
     def __init__(self):
         super().__init__()
@@ -61,8 +66,8 @@ class HelperNodes_SaveImage(BaseNode):
                 "seed_value": ("INT", {"default": 0, "min": 0, "max": 18446744073709551615, "step": 1}),
                 "width": ("INT", {"default": 1024, "min": 8, "max": MAX_RESOLUTION, "step": 8}),
                 "height": ("INT", {"default": 1024, "min": 8, "max": MAX_RESOLUTION, "step": 8}),
-                "aspect_ratio": ("STRING", {"default": "unknown"}),
-                "orientation": ("STRING", {"default": "unknown"}),
+                "aspect_ratio": ("STRING", {"default": "unknown", "forceInput": True}),
+                "orientation": ("STRING", {"default": "unknown", "forceInput": True}),
                 "lossless_webp": ("BOOLEAN", {"default": True}),
                 "quality_jpeg_or_webp": ("INT", {"default": 100, "min": 1, "max": 100}),
                 "counter": ("INT", {"default": 0, "min": 0, "max": 0xffffffffffffffff}),
@@ -96,11 +101,27 @@ class HelperNodes_SaveImage(BaseNode):
         basemodelname = parse_name(model_name)
         modelhash = calculate_sha256(ckpt_path)[:10]
         comment = (f"{handle_whitespace(positive_prompt)}\n{handle_whitespace(negative_prompt)}\nSteps: {steps}, "
-                   f"Sampler: {sampler_name}\nSampler: {sampler_name}, "
-                   f"{f'Scheduler: {scheduler}, ' if scheduler != 'normal' else ''}"
-                   f"CFG Scale: {cfg}, Seed: {seed_value}, Size: {width}x{height}, Aspect Ratio: {aspect_ratio}, "
-                   f"Orientation: {orientation}, Model: {basemodelname}, "
-                   f"Model Hash: {modelhash}, Version: ComfyUI")
+                   f"Sampler: {sampler_name}\nSampler: {sampler_name}, ")
+        if scheduler != "normal":
+            comment += f"Scheduler: {scheduler}, "
+
+        comment += f"CFG Scale: {cfg}, Seed: {seed_value}, Size: {width}x{height}, "
+
+        if aspect_ratio:
+            comment += f"Aspect Ratio: {aspect_ratio}, "
+
+        if orientation:
+            comment += f"Orientation: {orientation},"
+        else:
+            if width == height:
+                comment += f"Orientation: square, "
+            elif width > height:
+                comment += f"Orientation: landscape, "
+            else:
+                comment += f"Orientation: portrait, "
+
+        comment += f"Model: {basemodelname}, Model Hash: {modelhash}, Version: ComfyUI"
+
         output_path = os.path.join(self.output_dir, path)
 
         if output_path.strip() != '':
@@ -109,7 +130,8 @@ class HelperNodes_SaveImage(BaseNode):
                 os.makedirs(output_path, exist_ok=True)
 
         filenames = self.save_images(images, output_path, filename, comment, extension, quality_jpeg_or_webp,
-                                     lossless_webp, include_metadata=include_metadata, include_prompt_in_metadata=save_prompt_with_metadata,
+                                     lossless_webp, include_metadata=include_metadata,
+                                     include_prompt_in_metadata=save_prompt_with_metadata,
                                      include_extra_pnginfo=save_extra_pnginfo_with_metadata)
 
         subfolder = os.path.normpath(path)

@@ -1,6 +1,8 @@
 from .base import GLOBAL_CATEGORY, BaseNode
 
+# noinspection PyUnresolvedReferences,PyPackageRequirements
 import comfy
+# noinspection PyUnresolvedReferences,PyPackageRequirements
 import comfy.samplers
 
 MODULE_CATEGORY = f"{GLOBAL_CATEGORY}/conditioning"

@@ -1,8 +1,13 @@
+import math
+
 from .base import GLOBAL_CATEGORY, BaseNode
 
+# noinspection PyUnresolvedReferences,PyPackageRequirements
 import comfy
+# noinspection PyUnresolvedReferences,PyPackageRequirements
 import comfy.samplers
 
+# noinspection PyUnresolvedReferences,PyPackageRequirements
 from nodes import MAX_RESOLUTION
 
 MODULE_CATEGORY = f"{GLOBAL_CATEGORY}/util"
