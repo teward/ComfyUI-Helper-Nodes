@@ -94,7 +94,7 @@ class HelperNodes_SaveImage(BaseNode):
                    model_name: str, sampler_name: str, scheduler: str, positive_prompt: str, negative_prompt: str,
                    seed_value: int, width: int, height: int, aspect_ratio: str, orientation: str, lossless_webp: bool,
                    quality_jpeg_or_webp: str, counter: int, time_format: str, include_metadata: bool,
-                   save_prompt_with_metadata: bool, save_extra_pnginfo_with_metadata: bool):
+                   save_prompt_with_metadata: bool, save_extra_pnginfo_with_metadata: bool, prompt, extra_pnginfo):
         filename = make_filename(filename, seed_value, model_name, counter, time_format)
         path = make_pathname(path, seed_value, model_name, counter, time_format)
         ckpt_path = folder_paths.get_full_path("checkpoints", model_name)
@@ -130,7 +130,8 @@ class HelperNodes_SaveImage(BaseNode):
                 os.makedirs(output_path, exist_ok=True)
 
         filenames = self.save_images(images, output_path, filename, comment, extension, quality_jpeg_or_webp,
-                                     lossless_webp, include_metadata=include_metadata,
+                                     lossless_webp, prompt=prompt, extra_pnginfo=extra_pnginfo,
+                                     include_metadata=include_metadata,
                                      include_prompt_in_metadata=save_prompt_with_metadata,
                                      include_extra_pnginfo=save_extra_pnginfo_with_metadata)
 
