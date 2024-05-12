@@ -5,13 +5,15 @@ from .scheduler import HelperNodes_SchedulerSelector
 
 from .sampler import HelperNodes_SamplerSelector, HelperNodes_SeedSelector
 
-from .conditioning import HelperNodes_CLIPSkip
+from .conditioning import HelperNodes_CLIPSkip   # Not currently provided while we refine this.
 
 from .models import HelperNodes_VAESelector, HelperNodes_CheckpointSelector
 
 from .prompt import HelperNodes_Prompt
 
 from .sdxl import HelperNodes_SDXLCommonResolutions
+
+from .image import HelperNodes_SaveImage
 
 
 NODE_CLASS_MAPPINGS = {
@@ -27,6 +29,7 @@ NODE_CLASS_MAPPINGS = {
     "HelperNodes_VAESelector": HelperNodes_VAESelector,
     "HelperNodes_Prompt": HelperNodes_Prompt,
     "HelperNodes_SDXLCommonResolutions": HelperNodes_SDXLCommonResolutions,
+    "HelperNodes_SaveImage": HelperNodes_SaveImage,
 }
 
 NODE_DISPLAY_NAME_MAPPINGS = {
@@ -42,4 +45,5 @@ NODE_DISPLAY_NAME_MAPPINGS = {
     "HelperNodes_VAESelector": "VAE Selector",
     "HelperNodes_Prompt": "Positive/Negative Prompts",
     "HelperNodes_SDXLCommonResolutions": "Common SDXL Resolutions",
+    "HelperNodes_SaveImage": "Save Image",
 }
