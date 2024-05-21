@@ -1,5 +1,7 @@
 import math
 
+import whratio
+
 from .base import GLOBAL_CATEGORY, BaseNode
 
 # noinspection PyUnresolvedReferences,PyPackageRequirements
@@ -26,9 +28,9 @@ class HelperNodes_WidthHeight(BaseNode):
         return {
             "required": {
                 "width": ("INT", {
-                    "default": MAX_RESOLUTION,
+                    "default": 1024,
                     "min": 8,
-                    "max": 4096,
+                    "max": MAX_RESOLUTION,
                     "step": 8,
                     "display": "number"
                 }),
@@ -42,15 +44,25 @@ class HelperNodes_WidthHeight(BaseNode):
             }
         }
 
-    RETURN_TYPES = ("INT", "INT",)
-    RETURN_NAMES = ("width", "height")
+    RETURN_TYPES = ("INT", "INT", "STRING", "STRING",)
+    RETURN_NAMES = ("width", "height", "aspect ratio", "orientation",)
 
     CATEGORY = f"{MODULE_CATEGORY}"
 
     FUNCTION = "process"
 
     def process(self, width, height):
-        return width, height
+        if width > height:
+            orientation = "landscape"
+        elif width < height:
+            orientation = "portrait"
+        else:
+            orientation = "square"
+
+        aspect = whratio.as_int(width, height)
+        aspect_ratio = f"{aspect[0]}:{aspect[1]}"
+
+        return width, height, orientation, aspect_ratio
 
 
 class HelperNodes_CfgScale(BaseNode):
