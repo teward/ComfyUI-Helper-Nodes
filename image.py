@@ -92,10 +92,10 @@ class HelperNodes_SaveImage(BaseNode):
     # noinspection PyShadowingNames
     def save_files(self, images, filename: str, path: str, extension: str, steps: int, cfg: float,
                    model_name: str, sampler_name: str, scheduler: str, positive_prompt: str, negative_prompt: str,
-                   seed_value: int, width: int, height: int, lossless_webp: bool,
+                   seed_value: int, width: int, height: int, aspect_ratio: str, orientation: str, lossless_webp: bool,
                    quality_jpeg_or_webp: str, counter: int, time_format: str, include_metadata: bool,
                    save_prompt_with_metadata: bool, save_extra_pnginfo_with_metadata: bool, prompt=None,
-                   extra_pnginfo=None, aspect_ratio: str = None, orientation: str = None):
+                   extra_pnginfo=None):
         filename = make_filename(filename, seed_value, model_name, counter, time_format)
         path = make_pathname(path, seed_value, model_name, counter, time_format)
         ckpt_path = folder_paths.get_full_path("checkpoints", model_name)
