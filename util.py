@@ -62,7 +62,7 @@ class HelperNodes_WidthHeight(BaseNode):
         aspect = whratio.as_int(width, height)
         aspect_ratio = f"{aspect[0]}:{aspect[1]}"
 
-        return width, height, orientation, aspect_ratio
+        return width, height, aspect_ratio, orientation
 
 
 class HelperNodes_CfgScale(BaseNode):
