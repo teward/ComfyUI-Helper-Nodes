@@ -113,7 +113,7 @@ class HelperNodes_SaveImage(BaseNode):
             comment += f"Aspect Ratio: {aspect_ratio}, "
 
         if orientation:
-            comment += f"Orientation: {orientation},"
+            comment += f"Orientation: {orientation}, "
         else:
             if width == height:
                 comment += f"Orientation: square, "
