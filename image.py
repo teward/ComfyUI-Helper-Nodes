@@ -101,8 +101,9 @@ class HelperNodes_SaveImage(BaseNode):
         ckpt_path = folder_paths.get_full_path("checkpoints", model_name)
         basemodelname = parse_name(model_name)
         modelhash = calculate_sha256(ckpt_path)[:10]
-        comment = (f"{handle_whitespace(positive_prompt)}\n{handle_whitespace(negative_prompt)}\nSteps: {steps}, "
-                   f"Sampler: {sampler_name}\nSampler: {sampler_name}, ")
+        comment = (f"Prompt: {handle_whitespace(positive_prompt)} || \n"
+                   f"Negative prompt: {handle_whitespace(negative_prompt)} || \n"
+                   f"Steps: {steps}, Sampler: {sampler_name} \n")
 
         if scheduler != "normal":
             comment += f"Scheduler: {scheduler}, "
