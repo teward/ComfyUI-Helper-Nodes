@@ -1,0 +1,15 @@
+[project]
+name = "comfyui-helper-nodes"
+description = "Nodes: HelperNodes_MultilineStringLiteral, HelperNodes_StringLiteral, HelperNodes_Steps, HelperNodes_CfgScale, HelperNodes_WidthHeight, HelperNodes_SchedulerSelector, HelperNodes_SamplerSelector, ..."
+version = "1.0.0"
+license = "LICENSE"
+dependencies = ["numpy", "pillow", "piexif", "whratio"]
+
+[project.urls]
+Repository = "https://github.com/teward/ComfyUI-Helper-Nodes"
+#  Used by Comfy Registry https://comfyregistry.org
+
+[tool.comfy]
+PublisherId = ""
+DisplayName = "ComfyUI-Helper-Nodes"
+Icon = ""
